@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS opacity bug test</title>
+  <style>
+    @keyframes from-full-right {
+      from {
+        opacity: 0; /* Toggle this between 0 and 0.01 */
+        transform: translateX(100%);
+      }
+    }
+
+    [data-animate='header-link'] {
+      animation: from-full-right 1s ease-in-out calc(var(--delay, 0) * 0.15s) both;
+    }
+  </style>
+  <script>
+    setTimeout(() => {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'style.css';
+      document.head.appendChild(link);
+    }, 1); // <-- Toggle this between 1 and 500
+  </script>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li data-animate="header-link" style="--delay: 0"><a href="/"> Some random text </a></li>
+      <li data-animate="header-link" style="--delay: 1"><a href="/"> Some random text </a></li>
+      <li data-animate="header-link" style="--delay: 2"><a href="/"> Some random text </a></li>
+      <li data-animate="header-link" style="--delay: 3"><a href="/"> Some random text </a></li>
+      <li data-animate="header-link" style="--delay: 4"><a href="/"> Some random text </a></li>
+      <li data-animate="header-link" style="--delay: 5"><a href="/"> Some random text </a></li>
+    </ul>
+  </nav>
+</body>
+
+</html>

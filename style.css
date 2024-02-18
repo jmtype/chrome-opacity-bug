@@ -1,0 +1,10 @@
+@keyframes from-full-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+[data-animate='header-link'] {
+  animation: from-full-right 1s ease-in-out calc(var(--delay, 0) * 0.15s) both;
+}
